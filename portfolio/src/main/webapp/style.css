@@ -20,6 +20,6 @@
     max-width: 400;
 }
 
-.gallery-imagesimg img:hover {
+.gallery-images img:hover {
     border: thick solid darkblue;
 }

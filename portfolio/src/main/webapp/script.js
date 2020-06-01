@@ -16,9 +16,9 @@
  * Adds a random picture of Luna to the page.
  */
 function randomLuna() {
-    const lunaIndex = Math.floor(Math.random() * 5);
     const lunaNames = ['luna-beach.jpg', 'luna-beach-2.jpg', 'luna-hat.JPG', 
     'luna-park.JPG', 'luna-rosie.jpg'];
+    const lunaIndex = Math.floor(Math.random() * lunaNames.length);
 
     const lunaUrl = 'luna/' + lunaNames[lunaIndex];
     const imgLuna = document.createElement('img');
@@ -34,8 +34,8 @@ function randomLuna() {
  * Adds a random picture of Food to the page.
  */
 function randomFood() {
-    const foodIndex = Math.floor(Math.random() * 4);
     const foodNames = ['eggs.jpg', 'meat.JPG', 'pesto.JPG', 'stirfry.jpg'];
+    const foodIndex = Math.floor(Math.random() * foodNames.length);
 
     const foodUrl = 'food/' + foodNames[foodIndex];
     const imgFood = document.createElement('img');
