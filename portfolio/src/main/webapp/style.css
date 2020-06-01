@@ -16,8 +16,8 @@
 
 .gallery-images img {
     margin: 5px;
-    max-height: 300px;
-    max-width: 300;
+    max-height: 400px;
+    max-width: 400;
 }
 
 .gallery-imagesimg img:hover {
