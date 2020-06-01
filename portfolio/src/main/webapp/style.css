@@ -7,3 +7,19 @@
 #greeting-container {
   margin-top: 20px;
 }
+
+.gallery-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.gallery-images img {
+    margin: 5px;
+    max-height: 300px;
+    max-width: 300;
+}
+
+.gallery-imagesimg img:hover {
+    border: thick solid darkblue;
+}
