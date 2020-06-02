@@ -66,8 +66,8 @@
 
       <p>Click <a href="random-pair.html"><button type="button">here</button>
       </a> to see a random pairing of Luna and Food!</p>
-    <br/>
-    <br/>
+    <br/><br/>
+    
       <p><a href="gallery.html"><button type="button">Click here to see some
       of my favorite photos</button></a></p>
       <p> These photos are a collection of some of my favorite places and 
@@ -81,6 +81,25 @@
           <li>Friends and family also make an appearance!</li>
         </ul>  
       </p>
+
+      <div id="comment">
+        <h2>Leave a Comment</h2>
+        <form action="/data" method="POST">
+
+        
+        <label for="user-name">Your name:</label></br>
+        <input type="text" name="user-name">
+        </br></br>
+
+        //change format for comment box
+        <label for="user-comment">Your comment:</label></br>
+        <input type="text" name"user-comment">
+        </form>
+
+      </div>
+
+
+
       <button onclick="getData()">Get the Data URL</button>
       <div id="data-container"></div>
     </div>
