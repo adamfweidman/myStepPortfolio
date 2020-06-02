@@ -46,3 +46,9 @@ function randomFood() {
     foodHolder.innerHTML = '';
     foodHolder.appendChild(imgFood);
 }
+
+function getData() {
+  fetch('/data').then(response => response.text()).then((quote) => {
+    document.getElementById('data-container').innerHTML = quote;
+  });
+}
