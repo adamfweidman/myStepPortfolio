@@ -13,16 +13,42 @@
 // limitations under the License.
 
 /**
- * Adds a random greeting to the page.
+ * Adds a random picture of Luna to the page.
  */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+function randomLuna() {
+    const lunaNames = ['luna-beach.jpg', 'luna-beach-2.jpg', 'luna-hat.JPG', 
+    'luna-park.JPG', 'luna-rosie.jpg'];
+    const lunaIndex = Math.floor(Math.random() * lunaNames.length);
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+    const lunaUrl = 'luna/' + lunaNames[lunaIndex];
+    const imgLuna = document.createElement('img');
+    imgLuna.src = lunaUrl;
 
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+    const lunaHolder = document.getElementById('random-luna-holder');
+    //remove previous image and upload new one
+    lunaHolder.innerHTML = '';
+    lunaHolder.appendChild(imgLuna); 
+}
+
+/**
+ * Adds a random picture of Food to the page.
+ */
+function randomFood() {
+    const foodNames = ['eggs.jpg', 'meat.JPG', 'pesto.JPG', 'stirfry.jpg'];
+    const foodIndex = Math.floor(Math.random() * foodNames.length);
+
+    const foodUrl = 'food/' + foodNames[foodIndex];
+    const imgFood = document.createElement('img');
+    imgFood.src = foodUrl;
+
+    const foodHolder = document.getElementById('random-food-holder');
+    //remove previous image and upload new one
+    foodHolder.innerHTML = '';
+    foodHolder.appendChild(imgFood);
+}
+
+function getData() {
+  fetch('/data').then(response => response.text()).then((quote) => {
+    document.getElementById('data-container').innerHTML = quote;
+  });
 }
