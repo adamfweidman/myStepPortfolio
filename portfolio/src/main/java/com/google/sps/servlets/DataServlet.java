@@ -25,12 +25,12 @@ import com.google.gson.Gson;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-   ArrayList<String> messages = new ArrayList<String>();
+  
   
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("application/json;");
-    
+    ArrayList<String> messages = new ArrayList<String>();
     messages.add("ElementNumOne");
     messages.add("ElementNumTwo");
     messages.add("ElementNumThree");
