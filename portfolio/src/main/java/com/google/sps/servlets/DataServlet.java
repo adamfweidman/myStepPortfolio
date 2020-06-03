@@ -46,7 +46,6 @@ public class DataServlet extends HttpServlet {
       String output = userName + ":"  + "\n" + userComment;
       response.getWriter().println(output);
     }
-      
       //response.sendRedirect("/index.html");**/
   }
 
