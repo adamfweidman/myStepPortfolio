@@ -24,23 +24,34 @@ import com.google.gson.Gson;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-  //ArrayList<String> inputs = new ArrayList<String>();
-  ArrayList<String> names = new ArrayList<String>();
-  ArrayList<String> comments = new ArrayList<String>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
   throws IOException {
+    Query query = new Query("input");
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(0;)
+    PreparedQuery results = datastore.prepare(query);
+
+    List<String> names = new ArrayList<String>();
+    List<String> comments = new ArrayList<String>();
+
+    for (Entity entity : results.asIterable()) {
+      String name = entity.getProperty("name");
+      String comment = entity.getProperty("comment");
+      names.add(name);
+      comment.add(comment);
+    }
+  
+
     response.setContentType("application/json;");
 
-    /**Gson gson = new Gson();
-    String output = gson.toJson(inputs);
-    response.getWriter().println(output);**/
-  
     //patches together the name and comment
     for (int i = 0; i < names.size(); i++) {
       Gson gson = new Gson();
@@ -49,8 +60,6 @@ public class DataServlet extends HttpServlet {
       String output = userName + ":"  + "\n" + userComment;
       response.getWriter().println(output);
     }
-      
-      //response.sendRedirect("/index.html");**/
   }
 
   @Override
@@ -58,9 +67,6 @@ public class DataServlet extends HttpServlet {
   throws IOException {
     String name = request.getParameter("user-name");
     String comment = request.getParameter("user-comment");
-
-    names.add(name);
-    comments.add(comment);
 
     //create entity for new input and put it in the datastore
     Entity nameComEntity = new Entity("input");
