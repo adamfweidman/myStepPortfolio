@@ -16,6 +16,7 @@ package com.google.sps.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,20 +37,19 @@ public class DataServlet extends HttpServlet {
   throws IOException {
     Query query = new Query("input");
 
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService(0;)
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
     List<String> names = new ArrayList<String>();
     List<String> comments = new ArrayList<String>();
 
     for (Entity entity : results.asIterable()) {
-      String name = entity.getProperty("name");
-      String comment = entity.getProperty("comment");
+      String name = (String) entity.getProperty("name");
+      String comment = (String) entity.getProperty("comment");
       names.add(name);
-      comment.add(comment);
+      comments.add(comment);
     }
   
-
     response.setContentType("application/json;");
 
     //patches together the name and comment
