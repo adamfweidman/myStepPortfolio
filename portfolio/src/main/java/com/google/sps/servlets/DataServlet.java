@@ -21,10 +21,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
+import java.util.List;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
+
   //ArrayList<String> inputs = new ArrayList<String>();
   ArrayList<String> names = new ArrayList<String>();
   ArrayList<String> comments = new ArrayList<String>();
