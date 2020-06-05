@@ -52,6 +52,7 @@ function randomFood() {
  * Edit so that it shows in stacked form like on /data page
  */
 function getData() {
+
   fetch('/data?limit=3').then(response => response.text()).then((quote) => {
     document.getElementById('data-container').innerHTML = quote;
   });
