@@ -26,22 +26,16 @@ import java.util.List;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-  ArrayList<String> names = new ArrayList<String>();
-  ArrayList<String> comments = new ArrayList<String>();
+  ArrayList<User> users = new ArrayList<User>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
       throws IOException {
     response.setContentType("application/json;");
 
-    //patches together the name and comment
-    for (int i = 0; i < names.size(); i++) {
-      Gson gson = new Gson();
-      String userName = gson.toJson(names.get(i));
-      String userComment = gson.toJson(comments.get(i));
-      String output = userName + ":"  + "\n" + userComment;
-      response.getWriter().println(output);
-    }
+    Gson gson = new Gson();
+    String json = gson.toJson(gson);
+    response.getWriter().println(json);
   }
 
   @Override
@@ -50,8 +44,7 @@ public class DataServlet extends HttpServlet {
     String name = request.getParameter("user-name");
     String comment = request.getParameter("user-comment");
 
-    names.add(name);
-    comments.add(comment);
+    users.add(new User(name, comment));
 
     response.sendRedirect("/index.html");
   }
