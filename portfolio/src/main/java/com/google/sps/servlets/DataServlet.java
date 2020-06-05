@@ -20,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.google.sps.data.User;
 import com.google.gson.Gson;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class DataServlet extends HttpServlet {
     response.setContentType("application/json;");
 
     Gson gson = new Gson();
-    String json = gson.toJson(gson);
+    String json = gson.toJson(users);
     response.getWriter().println(json);
   }
 
