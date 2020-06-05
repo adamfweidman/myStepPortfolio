@@ -40,8 +40,7 @@ public class DataServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
       throws IOException {
     Query query = new Query("input");
-    int limit = Integer.parseInt(request.getParameter("limit"));
-    System.err.println(limit);
+    //int limit = Integer.parseInt(request.getParameter("limit"));
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
@@ -50,15 +49,16 @@ public class DataServlet extends HttpServlet {
     
     int count = 0;
     for (Entity entity : results.asIterable()) {
-      if (count < limit) {
+      //if (count < limit) {
         String name = (String) entity.getProperty("name");
         String comment = (String) entity.getProperty("comment");
         User user = new User(name, comment);
         users.add(user);
-        count++;
-      } else {
-        break;
-      }
+        System.err.println(name + "," + comment);
+        //count++;
+      //} else {
+       // break;
+      //}
     }    
   
     response.setContentType("application/json;");
@@ -74,11 +74,12 @@ public class DataServlet extends HttpServlet {
     String name = request.getParameter("user-name");
     String comment = request.getParameter("user-comment");
     
-    User user = new User(name, comment))
+    
 
     //create entity for new input and put it in the datastore
     Entity nameComEntity = new Entity("input");
-    nameComEntity.setProperty("User", user);
+    nameComEntity.setProperty("name", name);
+    nameComEntity.setProperty("comment", comment);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(nameComEntity);
 

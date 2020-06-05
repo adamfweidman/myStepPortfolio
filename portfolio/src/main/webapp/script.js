@@ -54,9 +54,9 @@ function randomFood() {
 function getData() {
   fetch('/data').then(response => response.json()).then((users) => {
     const printCom = document.getElementById('data-container');
-    users.forEach((user) => {
     printCom.innerHTML = '';
-     printCom.appendChild(
+    users.forEach((user) => {
+      printCom.appendChild(
         createCommentFormat("Name: " + user.username));
       printCom.appendChild(
         createCommentFormat("Comment: " + user.comment));
