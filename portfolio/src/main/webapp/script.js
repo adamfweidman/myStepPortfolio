@@ -47,6 +47,9 @@ function randomFood() {
     foodHolder.appendChild(imgFood);
 }
 
+/** 
+ * Retrives the text on the .../data URL and adds it to the DOM
+ */
 function getData() {
   fetch('/data').then(response => response.text()).then((quote) => {
     document.getElementById('data-container').innerHTML = quote;
