@@ -25,19 +25,14 @@ import com.google.gson.Gson;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-  //ArrayList<String> inputs = new ArrayList<String>();
   ArrayList<String> names = new ArrayList<String>();
   ArrayList<String> comments = new ArrayList<String>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
-  throws IOException {
+      throws IOException {
     response.setContentType("application/json;");
 
-    /**Gson gson = new Gson();
-    String output = gson.toJson(inputs);
-    response.getWriter().println(output);**/
-  
     //patches together the name and comment
     for (int i = 0; i < names.size(); i++) {
       Gson gson = new Gson();
@@ -46,8 +41,6 @@ public class DataServlet extends HttpServlet {
       String output = userName + ":"  + "\n" + userComment;
       response.getWriter().println(output);
     }
-      
-      //response.sendRedirect("/index.html");**/
   }
 
   @Override
