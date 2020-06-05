@@ -52,7 +52,20 @@ function randomFood() {
  * Edit so that it shows in stacked form like on /data page
  */
 function getData() {
-  fetch('/data?limit=3').then(response => response.text()).then((quote) => {
-    document.getElementById('data-container').innerHTML = quote;
+  fetch('/data').then(response => response.json()).then((users) => {
+    const printCom = document.getElementById('data-container');
+    users.forEach((user) => {
+    printCom.innerHTML = '';
+     printCom.appendChild(
+        createCommentFormat("Name: " + user.username));
+      printCom.appendChild(
+        createCommentFormat("Comment: " + user.comment));
+    })
   });
+}
+
+function createCommentFormat(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
 }

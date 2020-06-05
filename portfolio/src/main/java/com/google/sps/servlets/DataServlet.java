@@ -14,6 +14,8 @@
 
 package com.google.sps.servlets;
 
+import com.google.sps.data.User;
+import com.google.gson.Gson;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -28,48 +30,42 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
-  throws IOException {
+      throws IOException {
     Query query = new Query("input");
     int limit = Integer.parseInt(request.getParameter("limit"));
     System.err.println(limit);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
-
-    List<String> names = new ArrayList<String>();
-    List<String> comments = new ArrayList<String>();
-
+    
+    ArrayList<User> users = new ArrayList<User>();
+    
     int count = 0;
     for (Entity entity : results.asIterable()) {
       if (count < limit) {
         String name = (String) entity.getProperty("name");
         String comment = (String) entity.getProperty("comment");
-        names.add(name);
-        comments.add(comment);
+        User user = new User(name, comment);
+        users.add(user);
         count++;
-       System.err.println("got here!");
       } else {
         break;
       }
     }    
   
     response.setContentType("application/json;");
-    
-    //patches together the name and comment
-    for (int i = 0; i < names.size(); i++) {
-      Gson gson = new Gson();
-      String userName = gson.toJson(names.get(i));
-      String userComment = gson.toJson(comments.get(i));
-      String output = userName + ":"  + "\n" + userComment + "\n";
-      response.getWriter().println(output);
-    }
+
+    Gson gson = new Gson();
+    String json = gson.toJson(users);
+    response.getWriter().println(json);
   }
 
   @Override
@@ -78,21 +74,15 @@ public class DataServlet extends HttpServlet {
     String name = request.getParameter("user-name");
     String comment = request.getParameter("user-comment");
     
+    User user = new User(name, comment))
 
     //create entity for new input and put it in the datastore
     Entity nameComEntity = new Entity("input");
-    nameComEntity.setProperty("name", name);
-    nameComEntity.setProperty("comment", comment);
+    nameComEntity.setProperty("User", user);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(nameComEntity);
 
+
     response.sendRedirect("/index.html");
   }
-
-  /**
-  private int findLimit(HttpServletRequest request, HttpServletResponse response) 
-  throws IOException {
-    int limit.getParameter("num-comments");
-  }**/
-
 }
