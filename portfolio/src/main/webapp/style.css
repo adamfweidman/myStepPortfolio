@@ -1,17 +1,50 @@
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  height: 75vh;
-  background-image: url(gallery/gallery-9.jpg);
+* {
+  font-family: 'Franklin Gothic Medium', Arial, sans-serif
+}
+
+#start {
+  margin-left: 0;
+  margin-right: 0;
   background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0,0,0,0.7)), url(gallery/gallery-16.jpg);
   background-position: center;
   color: white;
+}
+
+.links ul {
+  text-align: center;
+  list-style-type: none;
+  margin-top: 20px;
+}
+
+.links ul li {
+  display: inline-block;
+  font-size: 30px;
+}
+
+.links ul li a {
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  transition: 0.5s ease;
+  padding: 10px 20px;
+}
+
+.links ul li a:hover {
+  background-color: white;
+  color: black;
+}
+
+#photos {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #comment {
   margin-left: auto;
   margin-right: auto;
   background-color: beige;
+  color: black
 }
 
 #greeting-container {
