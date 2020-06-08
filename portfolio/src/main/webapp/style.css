@@ -1,7 +1,17 @@
 #content {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
+  height: 75vh;
+  background-image: url(gallery/gallery-9.jpg);
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+#comment {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: beige;
 }
 
 #greeting-container {
