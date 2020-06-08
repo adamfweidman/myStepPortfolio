@@ -15,19 +15,22 @@
   text-align: center;
   list-style-type: none;
   margin-top: 20px;
+  
 }
 
 .links ul li {
   display: inline-block;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .links ul li a {
   text-decoration: none;
   color: white;
-  border: 1px solid white;
+  border: 1px solidtransparent;
   transition: 0.5s ease;
   padding: 10px 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .links ul li a:hover {
@@ -35,9 +38,29 @@
   color: black;
 }
 
-#photos {
+.photos {
   margin-left: auto;
   margin-right: auto;
+  font-size: 17px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.column {
+  padding: 5px;
+}
+
+.column img {
+  margin: 5px;
+  max-height: 400px;
+  justify-content: space-between;
+  position: center;
 }
 
 #comment {
