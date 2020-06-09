@@ -14,8 +14,8 @@
 
 package com.google.sps.servlets;
 
-import com.google.sps.data.User;
 import com.google.gson.Gson;
+import com.google.sps.data.Comment;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -34,8 +34,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  
-
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
       throws IOException {
@@ -45,26 +43,20 @@ public class DataServlet extends HttpServlet {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
     
-    ArrayList<User> users = new ArrayList<User>();
+    List<Comment> comments = new ArrayList<>();
     
     int count = 0;
     for (Entity entity : results.asIterable()) {
-      //if (count < limit) {
-        String name = (String) entity.getProperty("name");
-        String comment = (String) entity.getProperty("comment");
-        User user = new User(name, comment);
-        users.add(user);
-        System.err.println(name + "," + comment);
-        //count++;
-      //} else {
-       // break;
-      //}
+    	String name = (String) entity.getProperty("name");
+      String comment = (String) entity.getProperty("comment");
+      Comment com = new User(name, comment);
+      comments.add(com);
     }    
   
     response.setContentType("application/json;");
 
     Gson gson = new Gson();
-    String json = gson.toJson(users);
+    String json = gson.toJson(comments);
     response.getWriter().println(json);
   }
 
@@ -73,8 +65,6 @@ public class DataServlet extends HttpServlet {
   throws IOException {
     String name = request.getParameter("user-name");
     String comment = request.getParameter("user-comment");
-    
-    
 
     //create entity for new input and put it in the datastore
     Entity nameComEntity = new Entity("input");
@@ -82,7 +72,6 @@ public class DataServlet extends HttpServlet {
     nameComEntity.setProperty("comment", comment);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(nameComEntity);
-
 
     response.sendRedirect("/index.html");
   }
