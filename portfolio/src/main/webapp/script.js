@@ -57,9 +57,9 @@ function getData() {
     printCom.innerHTML = '';
     comments.forEach((comment) => {
      printCom.appendChild(
-        createCommentFormat("Name: " + comment.getUsername()));
+        createCommentFormat("Name: " + comment.username));
       printCom.appendChild(
-        createCommentFormat("Comment: " + comment.getComment()));
+        createCommentFormat("Comment: " + comment.comment));
     })
   });
 }
