@@ -20,25 +20,33 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.google.sps.data.User;
 import com.google.gson.Gson;
 import java.util.List;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-  
+  ArrayList<User> users = new ArrayList<User>();
+
   @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+  public void doGet(HttpServletRequest request, HttpServletResponse response) 
+      throws IOException {
     response.setContentType("application/json;");
-    List<String> messages = new ArrayList<String>();
-    messages.add("ElementNumOne");
-    messages.add("ElementNumTwo");
-    messages.add("ElementNumThree");
 
     Gson gson = new Gson();
-    String json = gson.toJson(messages);
-
-    response.getWriter().println(json);       
+    String json = gson.toJson(users);
+    response.getWriter().println(json);
   }
 
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) 
+  throws IOException {
+    String name = request.getParameter("user-name");
+    String comment = request.getParameter("user-comment");
+
+    users.add(new User(name, comment));
+
+    response.sendRedirect("/index.html");
+  }
 }
