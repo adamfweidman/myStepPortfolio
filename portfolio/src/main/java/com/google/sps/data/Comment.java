@@ -21,7 +21,7 @@ public class Comment {
   private String username;
   private String comment;
 
-  public User(String username, String comment) {
+  public Comment(String username, String comment) {
     this.username = username;
     this.comment = comment;
   }
