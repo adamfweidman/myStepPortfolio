@@ -57,9 +57,9 @@ function getData() {
     users.forEach((user) => {
     printCom.innerHTML = '';
      printCom.appendChild(
-        createCommentFormat("Name: " + user.username));
+        createCommentFormat("Name: " + user.getUsername()));
       printCom.appendChild(
-        createCommentFormat("Comment: " + user.comment));
+        createCommentFormat("Comment: " + user.getComment()));
     })
   });
 }
