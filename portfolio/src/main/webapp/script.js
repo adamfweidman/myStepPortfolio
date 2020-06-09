@@ -48,7 +48,7 @@ function randomFood() {
 }
 
 /** 
- * Retrives the text on the .../data URL and adds it to the DOM
+ * Retrives the text on the .../data URL and adds it to the page
  * Edit so that it shows in stacked form like on /data page
  */
 function getData() {
