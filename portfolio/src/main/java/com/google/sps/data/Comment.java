@@ -14,13 +14,22 @@
 
 package com.google.sps.data;
 
-public class User {
-  public String username;
-  public String comment;
+/**
+ * Class for each user that comments on the page
+ */
+public class Comment {
+  private String username;
+  private String comment;
 
-  public User(String username, String comment) {
+  public Comment(String username, String comment) {
     this.username = username;
     this.comment = comment;
   }
 
+  public String getUsername() {
+    return this.username;
+  }
+
+  public String getComment() {}
+  return this.comment;
 }
