@@ -15,7 +15,7 @@
 package com.google.sps.data;
 
 /**
- * Class for each user that comments on the page
+ * Class for each comment that a user makes on the page
  */
 public class Comment {
   private String username;
