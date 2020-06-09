@@ -30,6 +30,7 @@ public class Comment {
     return this.username;
   }
 
-  public String getComment() {}
-  return this.comment;
+  public String getComment() {
+    return this.comment;
+  }
 }
