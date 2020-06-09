@@ -47,6 +47,23 @@
   text-align: center;
 }
 
+.photos a {
+  text-decoration: none;
+  background-color: #00b3b3;
+  color: black;
+  border: 1px solid 5px;
+  transition: 0.5s ease;
+  padding: 10px 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 15px;
+}
+
+.photos a:hover {
+  background-color: black;
+  color: #00b3b3;
+}
+
 .row {
   display: flex;
   align-items: center;
@@ -74,6 +91,18 @@
   margin-top: 20px;
 }
 
+.galphoto a {
+  color: black;
+  background-color: #008ae6;
+  max-height: 50px;
+  max-width: 200px;
+}
+
+.galphoto a:hover {
+  background-color: black;
+  color: #008ae6;
+}
+
 .gallery-images {
     display: flex;
     flex-wrap: wrap;
@@ -88,4 +117,21 @@
 
 .gallery-images img:hover {
     border: thick solid darkblue;
+}
+
+.content button {
+	text-decoration: none;
+  background-color: #00b3b3;
+  color: black;
+  border: 1px solid 5px;
+  transition: 0.5s ease;
+  padding: 10px 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 15px;
+}
+
+.content button:hover {
+  background-color: black;
+  color: #00b3b3;
 }
