@@ -14,8 +14,8 @@
 
 package com.google.sps.servlets;
 
-import com.google.sps.data.Comment;
 import com.google.gson.Gson;
+import com.google.sps.data.Comment;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -51,7 +51,7 @@ public class DataServlet extends HttpServlet {
     String name = request.getParameter("user-name");
     String comment = request.getParameter("user-comment");
     
-    Comment comment = new Comment(name, comment))
+    Comment comment = new Comment(name, comment);
 
     //create entity for new input and put it in the datastore
     Entity nameComEntity = new Entity("input");
