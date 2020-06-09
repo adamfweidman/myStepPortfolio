@@ -15,7 +15,6 @@
   text-align: center;
   list-style-type: none;
   margin-top: 20px;
-  
 }
 
 .links ul li {
@@ -104,19 +103,19 @@
 }
 
 .gallery-images {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
 }
 
 .gallery-images img {
-    margin: 5px;
-    max-height: 400px;
-    max-width: 400;
+  margin: 5px;
+  max-height: 400px;
+  max-width: 400;
 }
 
 .gallery-images img:hover {
-    border: thick solid darkblue;
+  border: thick solid darkblue;
 }
 
 .content button {
