@@ -33,7 +33,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  ArrayList<Comment> comments = new ArrayList<Comment>();
+  private List<Comment> comments = new ArrayList<>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
