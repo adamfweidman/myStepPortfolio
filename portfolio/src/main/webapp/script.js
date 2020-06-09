@@ -52,14 +52,14 @@ function randomFood() {
  * Edit so that it shows in stacked form like on /data page
  */
 function getData() {
-  fetch('/data').then(response => response.json()).then((users) => {
+  fetch('/data').then(response => response.json()).then((comments) => {
     const printCom = document.getElementById('data-container');
-    users.forEach((user) => {
     printCom.innerHTML = '';
+    comments.forEach((comment) => {
      printCom.appendChild(
-        createCommentFormat("Name: " + user.getUsername()));
+        createCommentFormat("Name: " + comment.getUsername()));
       printCom.appendChild(
-        createCommentFormat("Comment: " + user.getComment()));
+        createCommentFormat("Comment: " + comment.getComment()));
     })
   });
 }

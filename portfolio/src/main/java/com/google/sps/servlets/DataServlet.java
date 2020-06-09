@@ -14,7 +14,7 @@
 
 package com.google.sps.servlets;
 
-import com.google.sps.data.User;
+import com.google.sps.data.Comment;
 import com.google.gson.Gson;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -33,7 +33,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  ArrayList<User> users = new ArrayList<User>();
+  ArrayList<Comment> comments = new ArrayList<Comment>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -41,7 +41,7 @@ public class DataServlet extends HttpServlet {
     response.setContentType("application/json;");
 
     Gson gson = new Gson();
-    String json = gson.toJson(users);
+    String json = gson.toJson(comments);
     response.getWriter().println(json);
   }
 
@@ -51,15 +51,15 @@ public class DataServlet extends HttpServlet {
     String name = request.getParameter("user-name");
     String comment = request.getParameter("user-comment");
     
-    User user = new User(name, comment))
+    Comment comment = new Comment(name, comment))
 
     //create entity for new input and put it in the datastore
     Entity nameComEntity = new Entity("input");
-    nameComEntity.setProperty("User", user);
+    nameComEntity.setProperty("Comment", comment);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(nameComEntity);
     
-    users.add(new User(name, comment));
+    comments.add(new Comment(name, comment));
 
     response.sendRedirect("/index.html");
   }
