@@ -34,6 +34,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  private static final String NAME = "name";
+  private static final String COMMENT = "comment";  
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
       throws IOException {
@@ -45,8 +48,8 @@ public class DataServlet extends HttpServlet {
     List<Comment> comments = new ArrayList<>();
     
     for (Entity entity : results.asIterable()) {
-    	String name = (String) entity.getProperty("name");
-      String comment = (String) entity.getProperty("comment");
+    	String name = (String) entity.getProperty(NAME);
+      String comment = (String) entity.getProperty(COMMENT);
       Comment com = new Comment(name, comment);
       comments.add(com);
     }    
@@ -66,8 +69,8 @@ public class DataServlet extends HttpServlet {
 
     //create entity for new input and put it in the datastore
     Entity nameComEntity = new Entity("input");
-    nameComEntity.setProperty("name", name);
-    nameComEntity.setProperty("comment", comment);
+    nameComEntity.setProperty(NAME, name);
+    nameComEntity.setProperty(COMMENT, comment);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(nameComEntity);
 
