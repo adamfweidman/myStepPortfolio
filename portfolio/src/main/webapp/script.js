@@ -57,15 +57,41 @@ function getData() {
     printCom.innerHTML = '';
     comments.forEach((comment) => {
      printCom.appendChild(
-        createCommentFormat("Name: " + comment.username));
+        createElementFormat(("Name: " + comment.username)), 'li');
       printCom.appendChild(
-        createCommentFormat("Comment: " + comment.comment));
+        createElementFormat(("Comment: " + comment.comment)), 'li');
     })
   });
 }
 
-function createCommentFormat(text) {
-  const liElement = document.createElement('li');
-  liElement.innerText = text;
-  return liElement;
+function createElementFormat(text, elementType) {
+  const element = document.createElement(elementType);
+  element.innerText = text;
+  return element;
+}
+
+/**
+ * Display the user's login information
+ */
+function showLoginInfo() {
+  fetch("/login").then(response => response.json()).then((user) => {
+    const userInfo = document.getElementById('login-container');
+	
+    //display email and logout if logged in, otherwise login
+    if (user.logIn) {
+      userInfo.append(createElementFormat(user.email, 'p'));
+
+      const printLogout = document.createElement('a');
+      printLogout.href = user.url;
+      printLogout.innerText = 'Logout Here';
+
+      userInfo.append(printLogout);
+    } else {
+      const printLogin = document.createElement('a');
+      printLogin.href = user.url;
+      printLogin.innerText = 'Login Here';
+
+      userInfo.append(printLogin);
+    }
+  });
 }
