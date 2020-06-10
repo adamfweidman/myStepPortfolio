@@ -48,10 +48,25 @@ function randomFood() {
 }
 
 /** 
- * Retrives the text on the .../data URL and adds it to the DOM
+ * fetches the information from the /data URL and then displays it on the 
+ * current page (index.html)
+ * Edit so that it shows in stacked form like on /data page
  */
 function getData() {
-  fetch('/data').then(response => response.text()).then((quote) => {
-    document.getElementById('data-container').innerHTML = quote;
+  fetch('/data').then(response => response.json()).then((comments) => {
+    const printCom = document.getElementById('data-container');
+    printCom.innerHTML = '';
+    comments.forEach((comment) => {
+     printCom.appendChild(
+        createCommentFormat("Name: " + comment.username));
+      printCom.appendChild(
+        createCommentFormat("Comment: " + comment.comment));
+    })
   });
+}
+
+function createCommentFormat(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
 }
