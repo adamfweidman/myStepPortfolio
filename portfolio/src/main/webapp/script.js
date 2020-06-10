@@ -48,7 +48,8 @@ function randomFood() {
 }
 
 /** 
- * Retrives the text on the .../data URL and adds it to the page
+ * fetches the information from the /data URL and then displays it on the 
+ * current page (index.html)
  * Edit so that it shows in stacked form like on /data page
  */
 function getData() {
