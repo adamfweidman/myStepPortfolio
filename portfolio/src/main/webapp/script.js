@@ -76,6 +76,7 @@ function createElementFormat(text, elementType) {
 function showLoginInfo() {
   fetch("/login").then(response => response.json()).then((user) => {
     const userInfo = document.getElementById('login-container');
+    userInfo.innerText = '';
 	
     //display email and logout if logged in, otherwise login
     if (user.logIn) {
