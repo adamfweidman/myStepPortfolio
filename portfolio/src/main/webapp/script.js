@@ -74,7 +74,7 @@ function createElementFormat(text, elementType) {
  * Display the user's login information
  */
 function showLoginInfo() {
-  fetch("/login").then(response => response.json()).then((user) => {
+  fetch('/login').then(response => response.json()).then((user) => {
     const userInfo = document.getElementById('login-container');
     userInfo.innerText = '';
 	
@@ -95,4 +95,29 @@ function showLoginInfo() {
       userInfo.append(printLogin);
     }
   });
+}
+
+/**
+ * Function that finds if user is logged in, to determine showing comments
+ */
+function getLoggedIn() {
+  fetch('/login').then(response => response.json()).then((user) => {
+    return user.logIn;
+  });
+}
+
+/**
+ * Function that finds user email to automaticalkly put in comment section
+ */
+function getEmail() {
+  fetch('/login').then(response => response.json()).then((user) => {
+    return user.email;
+  });
+}
+
+/**
+ * helper function to load all necessary information "onload"
+ */
+function onLoad() {
+  showLoginInfo();
 }
