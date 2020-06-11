@@ -18,7 +18,7 @@ package com.google.sps.data;
  * Class to keep track of user's email, logout URL, logged in status
  */
 public class UserLogin {
-	private String email;
+  private String email;
   private String url;
   private boolean logIn;
 
