@@ -24,7 +24,7 @@ public class UserLogin {
 
   public UserLogin(String email, String logoutURL, boolean logIn) {
     this.email = email;
-    this.url = logout;
+    this.url = logoutURL;
     this.logIn = logIn;
   }
 
