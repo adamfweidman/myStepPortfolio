@@ -44,6 +44,10 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-size: cover;
+  background-image: url(gallery/gallery-16.jpg);
+  background-position: center;
+  color: white;
 }
 
 .photos a {
@@ -61,6 +65,10 @@
 .photos a:hover {
   background-color: black;
   color: #00b3b3;
+}
+
+.photos ul li {
+  list-style-type: none;
 }
 
 .row {
