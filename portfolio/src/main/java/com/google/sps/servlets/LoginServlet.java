@@ -18,6 +18,7 @@ import com.google.appengine.api.datastore.*;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
+import com.google.sps.data.UserLogin;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.annotation.WebServlet;
@@ -35,7 +36,7 @@ public class LoginServlet extends HttpServlet {
     throws IOException {
       response.setContentType(JSON_OUTPUT_TYPE);
 
-      UserService userService = userServiceFactory.getUserService();
+      UserService userService = UserServiceFactory.getUserService();
       if (userService.isUserLoggedIn()) {
         String userEmail = userService.getCurrentUser().getEmail();
       	String urlToRedirectToAfterUserLogsOut = "/";
@@ -49,9 +50,11 @@ public class LoginServlet extends HttpServlet {
       } else {
       	String urlToRedirectToAfterUserLogsIn = "/";
       	String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
+
+        UserLogin user = new UserLogin(loginUrl, false);
         
         Gson gson = new Gson();
-    	  String json = gson.toJson(loginUR, false);
+    	  String json = gson.toJson(user);
     	  response.getWriter().println(json);
       }  
   }  
