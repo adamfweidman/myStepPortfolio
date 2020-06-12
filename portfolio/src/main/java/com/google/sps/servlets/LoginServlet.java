@@ -50,9 +50,9 @@ public class LoginServlet extends HttpServlet {
   	  response.getWriter().println(json);
      } else {
       String urlToRedirectToAfterUserLogsIn = "/";
-       String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
+      String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
 
-       UserLogin user = new UserLogin(loginUrl, false);
+      UserLogin user = new UserLogin(loginUrl, false);
         
       Gson gson = new Gson();
   	  String json = gson.toJson(user);
