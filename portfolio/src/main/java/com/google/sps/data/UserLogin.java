@@ -29,7 +29,6 @@ public class UserLogin {
   }
 
   public UserLogin(String loginURL, boolean login) {
-    this.url = loginURL;
-    this.login = login;
+    this(null, loginURL, login);
   }
 }
