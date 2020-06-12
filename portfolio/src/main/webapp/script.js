@@ -62,6 +62,9 @@ function getData() {
   });
 }
 
+/**
+ * create element in doc w text and type input
+ */
 function createElementFormat(text, elementType) {
   const element = document.createElement(elementType);
   element.innerText = text;
