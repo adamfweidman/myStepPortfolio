@@ -55,8 +55,8 @@ public class LoginServlet extends HttpServlet {
       UserLogin user = new UserLogin(loginUrl, false);
         
       Gson gson = new Gson();
-  	  String json = gson.toJson(user);
-  	  response.getWriter().println(json);
+      String json = gson.toJson(user);
+      response.getWriter().println(json);
     }  
   }  
 }
