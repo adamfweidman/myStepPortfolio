@@ -76,8 +76,8 @@ function showLoginInfo() {
     const userInfo = document.getElementById('login-container');
     userInfo.innerText = '';
 	
-    //display email and logout if logged in, otherwise login
-    if (user.logIn) {
+    // display email and logout if logged in, otherwise login
+    if (user.login) {
       userInfo.append(createElementFormat(user.email, 'p'));
 
       const printLogout = document.createElement('a');
@@ -100,21 +100,11 @@ function showLoginInfo() {
  */
 function commmentsOnLoad() {
   fetch('/login').then(response => response.json()).then((user) => {
-    const bool = user.logIn;
-    if (bool) {
+    if (user.login) {
     document.getElementById('comment').style.display = 'block';
   } else {
     document.getElementById('comment').style.display = 'none';
   }
-  });
-}
-
-/**
- * Function that finds user email to automaticalkly put in comment section
- */
-function getEmail() {
-  fetch('/login').then(response => response.json()).then((user) => {
-    return user.email;
   });
 }
 
@@ -124,4 +114,14 @@ function getEmail() {
 function onLoad() {
   showLoginInfo();
   commmentsOnLoad();
+  placeEmail()
+}
+
+/** Put email in the "name" textbox*/
+function placeEmail() {
+   fetch('/login').then(response => response.json()).then((user) => { 
+     const nameBox = document.getElementById('user-name');
+     nameBox.value = user.email;
+     console.log(user.email);
+   });
 }
