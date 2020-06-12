@@ -34,29 +34,29 @@ public class LoginServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
-    throws IOException {
-      response.setContentType(JSON_OUTPUT_TYPE);
+      throws IOException {
+    response.setContentType(JSON_OUTPUT_TYPE);
 
-      UserService userService = UserServiceFactory.getUserService();
-      if (userService.isUserLoggedIn()) {
-        String userEmail = userService.getCurrentUser().getEmail();
-        String urlToRedirectToAfterUserLogsOut = "/";
-        String logoutUrl = userService.createLogoutURL(urlToRedirectToAfterUserLogsOut);
+    UserService userService = UserServiceFactory.getUserService();
+    if (userService.isUserLoggedIn()) {
+      String userEmail = userService.getCurrentUser().getEmail();
+      String urlToRedirectToAfterUserLogsOut = "/";
+      String logoutUrl = userService.createLogoutURL(urlToRedirectToAfterUserLogsOut);
 
-        UserLogin user = new UserLogin(userEmail, logoutUrl, true);
+      UserLogin user = new UserLogin(userEmail, logoutUrl, true);
 
-        Gson gson = new Gson();
-    	  String json = gson.toJson(user);
-    	  response.getWriter().println(json);
-      } else {
-        String urlToRedirectToAfterUserLogsIn = "/";
-        String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
+       Gson gson = new Gson();
+   	  String json = gson.toJson(user);
+  	  response.getWriter().println(json);
+     } else {
+      String urlToRedirectToAfterUserLogsIn = "/";
+       String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
 
-        UserLogin user = new UserLogin(loginUrl, false);
+       UserLogin user = new UserLogin(loginUrl, false);
         
-        Gson gson = new Gson();
-    	  String json = gson.toJson(user);
-    	  response.getWriter().println(json);
-      }  
+      Gson gson = new Gson();
+  	  String json = gson.toJson(user);
+  	  response.getWriter().println(json);
+    }  
   }  
 }
