@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/** Servlet that returns current user's email and logged in status. */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
