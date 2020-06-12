@@ -57,10 +57,8 @@ function getData() {
     printCom.innerHTML = '';
     comments.forEach((comment) => {
      printCom.appendChild(
-        createElementFormat(("Name: " + comment.username)), 'li');
-      printCom.appendChild(
-        createElementFormat(("Comment: " + comment.comment)), 'li');
-    })
+        createElementFormat(comment.username + ":    " + comment.comment, 'li'));
+    });
   });
 }
 
@@ -100,9 +98,14 @@ function showLoginInfo() {
 /**
  * Function that finds if user is logged in, to determine showing comments
  */
-function getLoggedIn() {
+function commmentsOnLoad() {
   fetch('/login').then(response => response.json()).then((user) => {
-    return user.logIn;
+    const bool = user.logIn;
+    if (bool) {
+    document.getElementById('comment').style.display = 'block';
+  } else {
+    document.getElementById('comment').style.display = 'none';
+  }
   });
 }
 
@@ -120,4 +123,5 @@ function getEmail() {
  */
 function onLoad() {
   showLoginInfo();
+  commmentsOnLoad();
 }
