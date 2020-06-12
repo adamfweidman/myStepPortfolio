@@ -122,6 +122,5 @@ function placeEmail() {
    fetch('/login').then(response => response.json()).then((user) => { 
      const nameBox = document.getElementById('user-name');
      nameBox.value = user.email;
-     console.log(user.email);
    });
 }
