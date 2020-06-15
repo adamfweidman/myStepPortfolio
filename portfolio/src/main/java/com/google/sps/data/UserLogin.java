@@ -20,15 +20,13 @@ package com.google.sps.data;
 public class UserLogin {
   private String email;
   private String url;
-  private boolean login;
 
-  public UserLogin(String email, String url, boolean login) {
+  public UserLogin(String email, String url) {
     this.email = email;
     this.url = url;
-    this.login = login;
   }
 
-  public UserLogin(String url, boolean login) {
-    this(null, url, login);
+  public UserLogin(String url) {
+    this(null, url);
   }
 }
