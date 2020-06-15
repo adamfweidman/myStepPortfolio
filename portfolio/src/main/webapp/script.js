@@ -101,7 +101,7 @@ function showLoginInfo() {
 /**
  * Function that finds if user is logged in, to determine showing comments
  */
-function commmentsOnLoad() {
+function commentsOnLoad() {
   fetch('/login').then(response => response.json()).then((user) => {
     if (user.login) {
     document.getElementById('comment').style.display = 'block';
@@ -116,7 +116,7 @@ function commmentsOnLoad() {
  */
 function onLoad() {
   showLoginInfo();
-  commmentsOnLoad();
+  commentsOnLoad();
   placeEmail()
 }
 
