@@ -80,7 +80,7 @@ function showLoginInfo() {
     userInfo.innerText = '';
 	
     // display email and logout if logged in, otherwise login
-    if (user.login) {
+    if (user.email != null) {
       userInfo.append(createElementFormat(user.email, 'p'));
 
       const printLogout = document.createElement('a');
@@ -103,7 +103,7 @@ function showLoginInfo() {
  */
 function commentsOnLoad() {
   fetch('/login').then(response => response.json()).then((user) => {
-    if (user.login) {
+    if (user.email != null) {
     document.getElementById('comment').style.display = 'block';
     } else {
       document.getElementById('comment').style.display = 'none';
