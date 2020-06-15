@@ -22,13 +22,13 @@ public class UserLogin {
   private String url;
   private boolean login;
 
-  public UserLogin(String email, String logoutURL, boolean login) {
+  public UserLogin(String email, String url, boolean login) {
     this.email = email;
-    this.url = logoutURL;
+    this.url = url;
     this.login = login;
   }
 
-  public UserLogin(String loginURL, boolean login) {
-    this(null, loginURL, login);
+  public UserLogin(String url, boolean login) {
+    this(null, url, login);
   }
 }
