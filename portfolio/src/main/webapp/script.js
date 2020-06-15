@@ -105,9 +105,9 @@ function commmentsOnLoad() {
   fetch('/login').then(response => response.json()).then((user) => {
     if (user.login) {
     document.getElementById('comment').style.display = 'block';
-  } else {
-    document.getElementById('comment').style.display = 'none';
-  }
+    } else {
+      document.getElementById('comment').style.display = 'none';
+    }
   });
 }
 
