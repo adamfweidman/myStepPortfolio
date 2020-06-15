@@ -45,9 +45,9 @@ public class LoginServlet extends HttpServlet {
 
       UserLogin user = new UserLogin(userEmail, logoutUrl, true);
 
-       Gson gson = new Gson();
-   	  String json = gson.toJson(user);
-  	  response.getWriter().println(json);
+      Gson gson = new Gson();
+      String json = gson.toJson(user);
+      response.getWriter().println(json);
      } else {
       String urlToRedirectToAfterUserLogsIn = "/";
       String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
