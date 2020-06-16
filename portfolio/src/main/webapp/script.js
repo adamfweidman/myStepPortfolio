@@ -104,7 +104,7 @@ function showLoginInfo() {
 function commentsOnLoad() {
   fetch('/login').then(response => response.json()).then((user) => {
     if (user.email != null) {
-    document.getElementById('comment').style.display = 'block';
+      document.getElementById('comment').style.display = 'block';
     } else {
       document.getElementById('comment').style.display = 'none';
     }
