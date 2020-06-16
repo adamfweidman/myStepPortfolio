@@ -37,6 +37,7 @@ public class LoginServlet extends HttpServlet {
       throws IOException {
     response.setContentType(JSON_OUTPUT_TYPE);
 
+    // initialize user
     UserLogin user;
 
     UserService userService = UserServiceFactory.getUserService();
