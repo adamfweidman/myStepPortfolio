@@ -37,26 +37,24 @@ public class LoginServlet extends HttpServlet {
       throws IOException {
     response.setContentType(JSON_OUTPUT_TYPE);
 
+    UserLogin user;
+
     UserService userService = UserServiceFactory.getUserService();
     if (userService.isUserLoggedIn()) {
       String userEmail = userService.getCurrentUser().getEmail();
       String urlToRedirectToAfterUserLogsOut = "/";
       String logoutUrl = userService.createLogoutURL(urlToRedirectToAfterUserLogsOut);
 
-      UserLogin user = new UserLogin(userEmail, logoutUrl);
-
-      Gson gson = new Gson();
-      String json = gson.toJson(user);
-      response.getWriter().println(json);
+      user = new UserLogin(userEmail, logoutUrl);
      } else {
       String urlToRedirectToAfterUserLogsIn = "/";
       String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
 
-      UserLogin user = new UserLogin(loginUrl);
-        
-      Gson gson = new Gson();
-      String json = gson.toJson(user);
-      response.getWriter().println(json);
+      user = new UserLogin(loginUrl);
     }  
+
+    Gson gson = new Gson();
+    String json = gson.toJson(user);
+    response.getWriter().println(json);
   }  
 }
