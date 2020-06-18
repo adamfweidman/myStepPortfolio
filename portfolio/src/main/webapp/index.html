@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="onLoad()">
     <div id="start">
       <h1>Adam's Personal Portfolio</h1>
       <p>This is my portfolio. I just finished sophmore year and this is my 
@@ -91,36 +91,31 @@
       	<p><a href="gallery.html">Click here to see some of my 
           favorite photos</a></p>
       </div>
-      <p> These photos are a collection of some of my favorite places and 
-        activities. 
-        <ul>
-          <li>I love to Lake Tahoe because in the winter it has great    
-            skiing and during the summer the lake is warm
-            enough to swim in!</li>
-          <li>I added some photos of food that not only tasted amazing 
-            but looked the part for fun.</li>
-          <li>Friends and family also make an appearance!</li>
-        </ul>  
-      </p>
-    </div>
-      <div id="comment">
-        <h2>Leave a Comment</h2>
-        <form action="/data" method="POST">
-
-         <label for="user-name">Your name:</label></br>
-         <input type="text" name="user-name" required>
-         </br></br>
-
-         <label for="user-comment">Your comment:</label></br>
-
-         <textarea name="user-comment" required> </textarea>
-         <input type="submit"/>
-
-        </form>
+      <p><span> These photos are a collection of some of my favorite places and 
+      activities.
+      </span></p></br></br></br>
       </div>
+    </div>
+
+    <div class="login">
+      <div id="login-container"></div>
+    </div>
+
+    <div id="comment">
+      <h2>Leave a Comment</h2>
+      <form action="/data" method="POST">
+
+        <label for="user-name">Your name:</label></br>
+        <input name="user-name" id="user-name" required>
+        </br></br>
+
+        <label for="user-comment">Your comment:</label></br>
+
+        <textarea name="user-comment" required>Feedback...</textarea>
+        <input type="submit"/>
+      </form>
 
       <button onclick="getData()">See Comments</button>
-
       <div id="data-container"></div>
     </div>
   </body>

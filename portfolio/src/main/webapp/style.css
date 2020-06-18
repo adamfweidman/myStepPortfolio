@@ -44,6 +44,10 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-size: cover;
+  background-image: url(gallery/gallery-16.jpg);
+  background-position: center;
+  color: white;
 }
 
 .photos a {
@@ -63,6 +67,15 @@
   color: #00b3b3;
 }
 
+.photos ul li {
+  list-style-type: none;
+}
+
+.photos ul li span {
+  color: black;
+  background-color: #70baff;
+}
+
 .row {
   display: flex;
   align-items: center;
@@ -79,11 +92,16 @@
   position: center;
 }
 
+.photos span {
+  color: black;
+  background-color: #70baff;
+}
+
 #comment {
   margin-left: auto;
   margin-right: auto;
   background-color: beige;
-  color: black
+  color: black;
 }
 
 #greeting-container {
@@ -133,4 +151,9 @@
 .content button:hover {
   background-color: black;
   color: #00b3b3;
+}
+
+.login{
+  justify-content: center;
+  text-align: center;
 }

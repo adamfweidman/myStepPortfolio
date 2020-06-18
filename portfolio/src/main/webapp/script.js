@@ -58,15 +58,69 @@ function getData() {
     printCom.innerHTML = '';
     comments.forEach((comment) => {
      printCom.appendChild(
-        createCommentFormat("Name: " + comment.username));
-      printCom.appendChild(
-        createCommentFormat("Comment: " + comment.comment));
-    })
+        createElementFormat(comment.username + ":    " + comment.comment, 'li'));
+    });
   });
 }
 
-function createCommentFormat(text) {
-  const liElement = document.createElement('li');
-  liElement.innerText = text;
-  return liElement;
+/**
+ * create element in doc w text and type input
+ */
+function createElementFormat(text, elementType) {
+  const element = document.createElement(elementType);
+  element.innerText = text;
+  return element;
+}
+
+/**
+ * Display the user's login information
+ */
+function showLoginInfo(user) {
+  const userInfo = document.getElementById('login-container');
+  userInfo.innerText = '';
+	
+  // display email and logout if logged in, otherwise login
+  if (user.email != null) {
+    userInfo.append(createElementFormat(user.email, 'p'));
+
+    const printLogout = document.createElement('a');
+    printLogout.href = user.url;
+    printLogout.innerText = 'Logout Here';
+
+    userInfo.append(printLogout);
+  } else {
+    const printLogin = document.createElement('a');
+    printLogin.href = user.url;
+    printLogin.innerText = 'Login Here';
+
+    userInfo.append(printLogin);
+  }
+}
+
+/**
+ * Function that finds if user is logged in, to determine showing comments
+ */
+function loadCommentDiv(user) {
+  if (user.email != null) {
+    document.getElementById('comment').style.display = 'block';
+    placeEmail(user);
+  } else {
+    document.getElementById('comment').style.display = 'none';
+  }
+}
+
+/** Put email in the "name" textbox*/
+function placeEmail(user) {
+  const nameBox = document.getElementById('user-name');
+  nameBox.value = user.email;
+}
+
+/**
+ * helper function to load all necessary information "onload"
+ */
+function onLoad() {
+  fetch('/login').then(response => response.json()).then((user) => {
+    showLoginInfo(user);
+    loadCommentDiv(user);
+  });
 }
